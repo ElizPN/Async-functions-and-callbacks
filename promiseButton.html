@@ -20,20 +20,22 @@
         mark > 3 ? resolve(mark) : reject(mark);
       }, 5000);
     });
-    promise.then(
-      (value) => {
-        elResult.textContent = ` Ура Вы сдали экзамен на ${value}! Папа, как и обещал дал вам 100$.`;
-      },
-      (error) => {
-        elResult.textContent = `Увы, вы получили оценку ${error}! Папа не дал вам 100$`;
-      }
-    );
+    promise
+      .then(
+        (value) => {
+          elResult.textContent = ` Ура Вы сдали экзамен на ${value}! Папа, как и обещал дал вам 100$.`;
+        }
+        // you can also pass error into "then" as secoond argument and it will be handled.
+        // (error) => {
+        //   elResult.textContent = `Увы, вы получили оценку ${error}! Папа не дал вам 100$`;
+        // }
+      )
 
-    //   .catch((value) => {
-    //     elResult.textContent = `Увы, вы получили оценку ${value}! Папа не дал вам 100$`;
-    //   })
-    //   .finally(() => {
-    //     isProcess = false;
-    //   });
+      .catch((value) => {
+        elResult.textContent = `Увы, вы получили оценку ${value}! Папа не дал вам 100$`;
+      })
+      .finally(() => {
+        isProcess = false;
+      });
   };
 </script>
